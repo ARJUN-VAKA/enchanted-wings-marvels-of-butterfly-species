@@ -156,20 +156,36 @@ main {
     position: absolute;
     width: 60px;
     height: 60px;
-    background: url('/static/butterfly-wing.png') no-repeat;
+    background: url('/static/butterfly-wing.png') no-repeat; /* Local path */
     background-size: contain;
     z-index: 1;
 }
 
-.animated-butterfly {
-    animation: fly 8s infinite ease-in-out;
+.butterfly-1 {
+    animation: fly1 10s infinite ease-in-out;
+    left: 10%;
+    top: 20%;
 }
 
-@keyframes fly {
+.butterfly-2 {
+    animation: fly2 12s infinite ease-in-out;
+    left: 70%;
+    top: 30%;
+}
+
+@keyframes fly1 {
     0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(30px, 30px) rotate(20deg); }
+    25% { transform: translate(50px, 30px) rotate(20deg); }
     50% { transform: translate(0, 60px) rotate(0deg); }
-    75% { transform: translate(-30px, 30px) rotate(-20deg); }
+    75% { transform: translate(-50px, 30px) rotate(-20deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes fly2 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-40px, 50px) rotate(-15deg); }
+    50% { transform: translate(40px, 70px) rotate(15deg); }
+    75% { transform: translate(0, 30px) rotate(0deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
