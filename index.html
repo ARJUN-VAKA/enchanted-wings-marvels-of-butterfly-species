@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butterfly Species Classifier</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="background">
+        <div class="enchanted-wings marvels-of-butterfly-species"></div>
+        <div class="butterfly species recognising model" style="left: 70%; top: 30%;"></div>
+        <header>
+            <h1>Butterfly Species Classifier</h1>
+            <p>Discover the Wonders of Nature with AI</p>
+        </header>
+        <main>
+            <section class="results" id="results">
+                <h2>Prediction Results</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <label for="image" class="glossy-button choose-file-button">Choose File</label>
+                    <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png" required style="display: none;">
+                    <input type="submit" value="Identify Species" class="glossy-button">
+                </form>
+                <div class="result-container" id="result-container"></div>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const fileInput = document.getElementById('image');
+            const file = fileInput.files[0];
+            const resultContainer = $('#result-container');
+            resultContainer.empty().append('<div class="result-card">Processing...</div>');
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                console.log('Response:', data); // Debug the response
+                resultContainer.empty();
+                if (data.error) {
+                    resultContainer.append(`<div class="result-card">Error: ${data.error}</div>`);
+                } else {
+                    const imgUrl = URL.createObjectURL(file); // Temporary URL for the uploaded image
+                    resultContainer.append(`
+                        <div class="result-card">
+                            <img src="${imgUrl}" alt="Uploaded Butterfly" class="result-image">
+                            <div class="result-text">
+                                <span>Species: ${data.predicted_species || 'Unknown'}</span>
+                            </div>
+                        </div>
+                    `);
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                resultContainer.empty().append('<div class="result-card">Error: Failed to connect to the server</div>');
+            }
+        });
+    </script>
+</body>
+</html>

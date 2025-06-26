@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+}
+
+.background {
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #FFD700 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    color: #2E8B57;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, background 0.5s ease;
+}
+
+header:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #FF4500;
+}
+
+p {
+    font-size: 1.3em;
+    color: #6A5ACD;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.results {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.results:hover {
+    opacity: 0.95;
+    transform: translateY(-5px);
+}
+
+.result-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 15px 0;
+    background: #F0FFF0;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.2em;
+    color: #2F4F4F;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.result-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #98FB98;
+}
+
+.result-text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.glossy-button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background: linear-gradient(145deg, #32CD32, #228B22);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 100, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Verdana', sans-serif;
+    margin: 10px;
+}
+
+.glossy-button:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 100, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.7);
+    background: linear-gradient(145deg, #228B22, #32CD32);
+}
+
+.glossy-button:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0 2px 10px rgba(0, 100, 0, 0.3), inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.choose-file-button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background: linear-gradient(145deg, #9370DB, #8A2BE2);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Verdana', sans-serif;
+    margin: 10px;
+}
+
+.choose-file-button:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.7);
+    background: linear-gradient(145deg, #8A2BE2, #9370DB);
+}
+
+.choose-file-button:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0 2px 10px rgba(138, 43, 226, 0.3), inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.butterfly {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: url('/static/butterfly-wing.png') no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+
+.animated-butterfly {
+    animation: fly 8s infinite ease-in-out;
+}
+
+@keyframes fly {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(30px, 30px) rotate(20deg); }
+    50% { transform: translate(0, 60px) rotate(0deg); }
+    75% { transform: translate(-30px, 30px) rotate(-20deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #6A5ACD;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
