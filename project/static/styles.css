@@ -156,7 +156,7 @@ main {
     position: absolute;
     width: 60px;
     height: 60px;
-    background: url('/static/butterfly-wing.png') no-repeat; /* Local path */
+    background: url('/static/butterfly-wing.png') no-repeat;
     background-size: contain;
     z-index: 1;
 }
