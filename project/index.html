@@ -45,12 +45,12 @@
                     body: formData
                 });
                 const data = await response.json();
-                console.log('Response:', data); // Debug the response
+                console.log('Response:', data); 
                 resultContainer.empty();
                 if (data.error) {
                     resultContainer.append(`<div class="result-card">Error: ${data.error}</div>`);
                 } else {
-                    const imgUrl = URL.createObjectURL(file); // Temporary URL for the uploaded image
+                    const imgUrl = URL.createObjectURL(file); 
                     resultContainer.append(`
                         <div class="result-card">
                             <img src="${imgUrl}" alt="Uploaded Butterfly" class="result-image">
